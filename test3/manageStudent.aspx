@@ -5,7 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <style type="text/css">
-
+        html,body{
+            margin:0px;
+            height:100%;
+        }
 
     </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
