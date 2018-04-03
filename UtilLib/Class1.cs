@@ -11,11 +11,13 @@ namespace UtilLib
     public class Util
     {
         public static String sqlCon = "Data Source=(local);Database=test3;Uid=sa;Pwd=123456";
-
+         
         static public Boolean Login(String account, String password)
         {
             return false;
         }
+
+        
 
         public static DataSet GetTableDataSet(String tableName, String Key, String Value)
         {
@@ -52,7 +54,7 @@ namespace UtilLib
             {
                 sqlstr += kvp.Key.Trim() + "='" + kvp.Value.Trim() + "',";
             }
-            sqlstr.Substring(0, sqlstr.Length - 1);
+            sqlstr = sqlstr.Substring(0, sqlstr.Length - 1);
             sqlstr += " where " + Key.Trim() + "='" + Value.Trim() + "'";
             SqlConnection sqlcon = new SqlConnection(sqlCon);
             SqlCommand sqlcom = new SqlCommand(sqlstr, sqlcon);

@@ -16,6 +16,12 @@
         height:100%;
     }
 
+    .action{
+        position:absolute;
+        left:90%;
+        top:80%;
+    }
+
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -25,6 +31,9 @@
     <form id="form1" runat="server">
         <div class="label">
             <h1>欢迎来到学生信息管理系统</h1>
+        </div>
+        <div class="action">
+            <a href="index.aspx" target="_top">退出登录</a>
         </div>
     </form>
 </body>

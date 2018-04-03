@@ -11,11 +11,11 @@
 </head>
 <frameset rows="15%,85%">
 
-    <frame src="/welcome/TitleForm.aspx" noresize="noresize">
+    <frame src="TitleForm.aspx" noresize="noresize">
 
     <frameset cols="15%,85%">
-        <frame name="left_frame" src="/welcome/NaviForm.aspx" noresize="noresize">
-        <frame name="right_frame" src="/welcome/UserForm.aspx" noresize="noresize">
+        <frame name="left_frame" src="NaviForm.aspx" noresize="noresize">
+        <frame name="right_frame" src="manageStudent.aspx" noresize="noresize">
     </frameset>
 
 </frameset>
