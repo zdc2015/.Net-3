@@ -25,7 +25,7 @@ namespace UtilLib
             return GetDataSet(sqlstr, tableName);
         }
 
-        public static DataSet GetDataSet(String sqlstr, String tableName)
+        private static DataSet GetDataSet(String sqlstr, String tableName)
         {
             SqlConnection scn = new SqlConnection(sqlCon);
             SqlDataAdapter myda = new SqlDataAdapter(sqlstr, scn);
@@ -34,6 +34,29 @@ namespace UtilLib
             myda.Fill(myds, tableName);
             scn.Close();
             return myds;
+        }
+
+        public static void Insert(String tableName, Dictionary<String,String> dic)
+        {
+            //INSERT INTO Persons (LastName, Address) VALUES ('Wilson', 'Champs-Elysees')
+            String sqlstr = "insert into " + tableName.Trim() + " (";
+            foreach(KeyValuePair<String, String> kvp in dic)
+            {
+                sqlstr += kvp.Key.Trim() + ",";
+            }
+            sqlstr = sqlstr.Substring(0, sqlstr.Length - 1);
+            sqlstr += ") values (";
+            foreach (KeyValuePair<String, String> kvp in dic)
+            {
+                sqlstr += "'"+kvp.Value.Trim() + "',";
+            }
+            sqlstr = sqlstr.Substring(0, sqlstr.Length - 1);
+            sqlstr += ")";
+            SqlConnection sqlcon = new SqlConnection(sqlCon);
+            SqlCommand sqlcom = new SqlCommand(sqlstr, sqlcon);
+            sqlcon.Open();
+            sqlcom.ExecuteNonQuery();
+            sqlcon.Close();
         }
 
         public static Boolean Delete(String tableName, String Key, String Value)
@@ -45,6 +68,19 @@ namespace UtilLib
             sqlcom.ExecuteNonQuery();
             sqlcon.Close();
             return true;
+        }
+
+        public static Boolean IsStudentExist(String id)
+        {
+            DataSet ds = GetTableDataSet("Student", "id", id);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public static void Update(Dictionary<String,String> dic, String tableName, String Key, String Value)

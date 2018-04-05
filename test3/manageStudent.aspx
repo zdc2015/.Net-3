@@ -10,6 +10,24 @@
             height:100%;
         }
 
+        form{
+            position:absolute;
+            width:fit-content;
+            height:80%;
+            top:50%;
+            left:50%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+
+        .add{
+            position:absolute;
+            bottom:5%;
+        }
+
+        .method{
+            margin-bottom:10%;
+        }
+
     </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
@@ -107,10 +125,6 @@
                     <asp:TemplateField HeaderText="专业">
                         <EditItemTemplate>
                             <asp:DropDownList runat="server" ID="dmajor" >
-                                <asp:ListItem>计算机科学与技术</asp:ListItem>
-                                <asp:ListItem>软件工程</asp:ListItem>
-                                <asp:ListItem>信息安全</asp:ListItem>
-                                <asp:ListItem>物联网</asp:ListItem>
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
@@ -132,6 +146,11 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
+
+        <div class="add">
+            <asp:Button ID="AddStudent" runat="server" Text="增加学生" OnClick="AddStudent_Click"/>
+        </div>
+
     </form>
 </body>
 </html>

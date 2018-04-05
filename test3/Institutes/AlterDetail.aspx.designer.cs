@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace test3 {
+namespace test3.Institutes {
     
     
-    public partial class manageStudent {
+    public partial class AlterDetail {
         
         /// <summary>
         /// form1 控件。
@@ -22,57 +22,57 @@ namespace test3 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// view_all 控件。
+        /// name 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button view_all;
+        protected global::System.Web.UI.WebControls.Label name;
         
         /// <summary>
-        /// textkey 控件。
+        /// intro 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textkey;
+        protected global::System.Web.UI.WebControls.TextBox intro;
         
         /// <summary>
-        /// select_type 控件。
+        /// leader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList select_type;
+        protected global::System.Web.UI.WebControls.TextBox leader;
         
         /// <summary>
-        /// view_part 控件。
+        /// save 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button view_part;
+        protected global::System.Web.UI.WebControls.Button save;
         
         /// <summary>
-        /// GridView1 控件。
+        /// back 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button back;
         
         /// <summary>
-        /// AddStudent 控件。
+        /// tip 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddStudent;
+        protected global::System.Web.UI.WebControls.Label tip;
     }
 }

@@ -13,7 +13,7 @@
 
     <frame src="TitleForm.aspx" noresize="noresize">
 
-    <frameset cols="15%,85%">
+    <frameset cols="17%,83%">
         <frame name="left_frame" src="NaviForm.aspx" noresize="noresize">
         <frame name="right_frame" src="manageStudent.aspx" noresize="noresize">
     </frameset>

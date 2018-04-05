@@ -75,8 +75,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddStudent.aspx" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
+    <Content Include="Institutes\AlterDetail.aspx" />
+    <Content Include="Institutes\InstituteDetail.aspx" />
     <Content Include="manageStudent.aspx" />
     <Content Include="NaviForm.aspx" />
     <Content Include="TitleForm.aspx" />
@@ -85,6 +88,13 @@
     <Content Include="welcome.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddStudent.aspx.cs">
+      <DependentUpon>AddStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddStudent.aspx.designer.cs">
+      <DependentUpon>AddStudent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -94,6 +104,20 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Institutes\AlterDetail.aspx.cs">
+      <DependentUpon>AlterDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Institutes\AlterDetail.aspx.designer.cs">
+      <DependentUpon>AlterDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Institutes\InstituteDetail.aspx.cs">
+      <DependentUpon>InstituteDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Institutes\InstituteDetail.aspx.designer.cs">
+      <DependentUpon>InstituteDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="manageStudent.aspx.cs">
       <DependentUpon>manageStudent.aspx</DependentUpon>
@@ -134,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Courses\" />
+    <Folder Include="Majors\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

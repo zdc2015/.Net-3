@@ -13,9 +13,11 @@ namespace test3
     {
         public static String[] selectTypeText = {"学号", "姓名", "学院", "年级","班级" ,"专业"};
         public static String[] selectTypeValue = { "id", "name", "institute", "grade", "class", "major" };
-
+        //编辑之前的值
         public static String id = ""; 
         public static String ins = "";
+        public static String maj = "";
+        //查询数据
         public static String value = "";
         public static String key = "";
 
@@ -73,7 +75,7 @@ namespace test3
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            String id = ((Label)this.GridView1.Rows[e.RowIndex].FindControl("Label1")).Text;
+            String id = ((Label)this.GridView1.Rows[e.RowIndex].FindControl("lid")).Text;
             Util.Delete("Student", "id", id);
             Databind();
         }
@@ -84,7 +86,7 @@ namespace test3
             GridViewRow row = GridView1.Rows[e.NewEditIndex];
             id = ((Label)row.FindControl("lid")).Text;
             ins = ((Label)row.FindControl("lins")).Text;
-            String maj = ((Label)row.FindControl("lmajor")).Text;
+            maj = ((Label)row.FindControl("lmajor")).Text;
             Databind();
         }
 
@@ -129,10 +131,11 @@ namespace test3
             DropDownList majorList = ((DropDownList)this.GridView1.Rows[GridView1.EditIndex].FindControl("dmajor"));
             DropDownList instList = ((DropDownList)this.GridView1.Rows[GridView1.EditIndex].FindControl("dins"));
 
-            majorList.ClearSelection();
-            String value = instList.SelectedValue;
-
-
+            DataSet ds = Util.GetTableDataSet("Major", "institute", instList.SelectedItem.Text);
+            majorList.Items.Clear();
+            majorList.DataSource = ds.Tables["Major"].DefaultView;
+            majorList.DataTextField = "name";
+            majorList.DataBind();
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -145,8 +148,26 @@ namespace test3
                 {
                     li.Selected = true;
                 }
-
             }
+            ddl = ((DropDownList)e.Row.FindControl("dmajor"));
+            if (ddl != null)
+            {
+                DataSet ds = Util.GetTableDataSet("Major", "institute", ins);
+                ddl.DataSource = ds.Tables["Major"].DefaultView;
+                ddl.DataTextField = "name";
+                ddl.DataBind();
+                ListItem li = ddl.Items.FindByText(maj);
+                if (li != null)
+                {
+                    li.Selected = true;
+                }
+            }
+        }
+
+        protected void AddStudent_Click(object sender, EventArgs e)
+        {
+            Session["url"] = Request.RawUrl;
+            Response.Redirect("/AddStudent.aspx");
         }
     }
 }
