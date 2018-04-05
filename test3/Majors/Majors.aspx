@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="manageStudent.aspx.cs" Inherits="test3.manageStudent" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Majors.aspx.cs" Inherits="test3.Majors.Majors" %>
 
 <!DOCTYPE html>
 
@@ -25,7 +25,7 @@
         }
 
         .method{
-            margin-bottom:10%;
+            margin-bottom:5%;
         }
 
     </style>
@@ -34,12 +34,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="method">
-            <asp:Button ID="view_all" runat="server" Text="查看全部" OnClick="view_all_Click" style="margin-right:20px;"/>
-            <asp:TextBox ID="textkey" runat="server" />
-            <asp:DropDownList ID="select_type" runat="server" ></asp:DropDownList>
-            <asp:Button ID="view_part" runat="server" Text="查询" OnClick="view_part_Click" />
-        </div>
         <div>
             <asp:GridView ID="GridView1" runat="server" 
                 CellPadding="4" 
@@ -57,7 +51,7 @@
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
                 <Columns>
-                    <asp:TemplateField HeaderText="学号">
+                    <asp:TemplateField HeaderText="专业编号">
                         <EditItemTemplate>
                             <asp:TextBox Width="100px" ID="tid" runat="server" Text='<%# Bind("id") %>'></asp:TextBox>
                         </EditItemTemplate>
@@ -65,7 +59,7 @@
                             <asp:Label Width="100px" ID="lid" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="姓名">
+                    <asp:TemplateField HeaderText="专业名">
                         <EditItemTemplate>
                             <asp:TextBox ID="tname" runat="server" Text='<%# Bind("name") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -73,27 +67,22 @@
                             <asp:Label ID="lname" runat="server" Text='<%# Bind("name") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="性别">
+                    <asp:TemplateField HeaderText="父专业编号">
                         <ItemTemplate>
-                            <asp:Label ID="lgender" runat="server" Text='<%# Bind("gender") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="lfather_id" runat="server" Text='<%# Bind("father_id") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="出生日期">
-                        <ItemTemplate>
-                            <asp:Label ID="lbirthday" runat="server" Text='<%# Bind("birthday") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="手机">
                         <EditItemTemplate>
-                            <asp:TextBox ID="tphone" runat="server" Text='<%# Bind("phone") %>' Width="100px"></asp:TextBox>
+                            <asp:TextBox ID="tfather_id" runat="server" Text='<%# Bind("father_id") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="学生人数">
                         <ItemTemplate>
-                            <asp:Label ID="lphone" runat="server" Text='<%# Bind("phone") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="stuNum" runat="server" Text='<%# Bind("num") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="学院">
+                    <asp:TemplateField HeaderText="所属学院">
                         <EditItemTemplate>
-                            <asp:DropDownList Width="100px" runat="server" ID="dins" OnTextChanged="dins_TextChanged" AutoPostBack="true">
+                            <asp:DropDownList Width="200px" runat="server" ID="dins">
                                 <asp:ListItem Value="1">航空宇航学院</asp:ListItem>
                                 <asp:ListItem Value="2">自动化学院</asp:ListItem>
                                 <asp:ListItem Value="3">机械学院</asp:ListItem>
@@ -102,32 +91,7 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lins" runat="server" Text='<%# Bind("institute") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="年级">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tgrade" runat="server" Text='<%# Bind("grade") %>' Width="100px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("grade") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="班级">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tclass" runat="server" Text='<%# Bind("class") %>' Width="100px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("class") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="专业">
-                        <EditItemTemplate>
-                            <asp:DropDownList runat="server" ID="dmajor" Width="100px" >
-                            </asp:DropDownList>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lmajor" runat="server" Text='<%# Bind("major") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="lins" runat="server" Text='<%# Bind("institute") %>' Width="200px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="true" ShowDeleteButton="true" />
@@ -147,7 +111,7 @@
         </div>
 
         <div class="add">
-            <asp:Button ID="AddStudent" runat="server" Text="增加学生" OnClick="AddStudent_Click"/>
+            <asp:Button ID="AddMajor" runat="server" Text="增加专业" OnClick="AddMajor_Click"/>
         </div>
     </form>
 </body>

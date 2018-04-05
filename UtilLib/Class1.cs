@@ -25,6 +25,17 @@ namespace UtilLib
             return GetDataSet(sqlstr, tableName);
         }
 
+        public static DataSet GetTableDataSet(String tableName, Dictionary<String, String> dic)
+        {
+            string sqlstr = "select * from " + tableName.Trim() + " where ";
+            foreach (KeyValuePair<String, String> kvp in dic)
+            {
+                sqlstr += kvp.Key.Trim() + " like '%" + kvp.Value.Trim() + "%' and ";
+            }
+            sqlstr = sqlstr.Substring(0, sqlstr.Length - 5);
+            return GetDataSet(sqlstr, tableName);
+        }
+
         private static DataSet GetDataSet(String sqlstr, String tableName)
         {
             SqlConnection scn = new SqlConnection(sqlCon);
@@ -34,6 +45,12 @@ namespace UtilLib
             myda.Fill(myds, tableName);
             scn.Close();
             return myds;
+        }
+
+        public static int GetStudentNumOfMajor(String majorName)
+        {
+            DataSet ds = GetTableDataSet("Student", "major", majorName);
+            return ds.Tables[0].Rows.Count;
         }
 
         public static void Insert(String tableName, Dictionary<String,String> dic)
@@ -68,6 +85,32 @@ namespace UtilLib
             sqlcom.ExecuteNonQuery();
             sqlcon.Close();
             return true;
+        }
+
+        public static Boolean IsIdExist(String tableName,String id)
+        {
+            DataSet ds = GetTableDataSet(tableName, "id", id);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static Boolean IsNameExist(String tableName, String name)
+        {
+            DataSet ds = GetTableDataSet(tableName, "name", name);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public static Boolean IsStudentExist(String id)

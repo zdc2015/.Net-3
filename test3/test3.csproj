@@ -76,10 +76,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddStudent.aspx" />
+    <Content Include="Courses\AddCourse.aspx" />
+    <Content Include="Courses\Courses.aspx" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="Institutes\AlterDetail.aspx" />
     <Content Include="Institutes\InstituteDetail.aspx" />
+    <Content Include="Majors\AddMajor.aspx" />
+    <Content Include="Majors\Majors.aspx" />
     <Content Include="manageStudent.aspx" />
     <Content Include="NaviForm.aspx" />
     <Content Include="TitleForm.aspx" />
@@ -94,6 +98,20 @@
     </Compile>
     <Compile Include="AddStudent.aspx.designer.cs">
       <DependentUpon>AddStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\AddCourse.aspx.cs">
+      <DependentUpon>AddCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Courses\AddCourse.aspx.designer.cs">
+      <DependentUpon>AddCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\Courses.aspx.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Courses\Courses.aspx.designer.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -118,6 +136,20 @@
     </Compile>
     <Compile Include="Institutes\InstituteDetail.aspx.designer.cs">
       <DependentUpon>InstituteDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Majors\AddMajor.aspx.cs">
+      <DependentUpon>AddMajor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Majors\AddMajor.aspx.designer.cs">
+      <DependentUpon>AddMajor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Majors\Majors.aspx.cs">
+      <DependentUpon>Majors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Majors\Majors.aspx.designer.cs">
+      <DependentUpon>Majors.aspx</DependentUpon>
     </Compile>
     <Compile Include="manageStudent.aspx.cs">
       <DependentUpon>manageStudent.aspx</DependentUpon>
@@ -158,8 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Courses\" />
-    <Folder Include="Majors\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
