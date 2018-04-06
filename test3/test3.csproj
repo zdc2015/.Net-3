@@ -79,6 +79,8 @@
     <Content Include="Courses\AddCourse.aspx" />
     <Content Include="Courses\Courses.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Grades\AddGrades.aspx" />
+    <Content Include="Grades\ViewGrades.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Institutes\AlterDetail.aspx" />
     <Content Include="Institutes\InstituteDetail.aspx" />
@@ -115,6 +117,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Grades\AddGrades.aspx.cs">
+      <DependentUpon>AddGrades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grades\AddGrades.aspx.designer.cs">
+      <DependentUpon>AddGrades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Grades\ViewGrades.aspx.cs">
+      <DependentUpon>ViewGrades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grades\ViewGrades.aspx.designer.cs">
+      <DependentUpon>ViewGrades.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

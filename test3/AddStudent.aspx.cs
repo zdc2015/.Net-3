@@ -41,6 +41,8 @@ namespace test3
             dmajor.DataSource = ds.Tables["Major"].DefaultView;
             dmajor.DataTextField = "name";
             dmajor.DataBind();
+
+            this.id.Focus();
         }
 
         protected void save_Click(object sender, EventArgs e)

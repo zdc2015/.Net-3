@@ -85,7 +85,7 @@ namespace test3.Courses
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             String id = ((Label)this.GridView1.Rows[e.RowIndex].FindControl("lid")).Text;
-            Util.Delete("Courses", "id", id);
+            Util.Delete("Course", "id", id);
             Databind();
         }
 
@@ -95,7 +95,7 @@ namespace test3.Courses
             GridViewRow row = GridView1.Rows[e.NewEditIndex];
             id = ((Label)row.FindControl("lid")).Text;
             ins = ((Label)row.FindControl("lins")).Text;
-            old_name = ins = ((Label)row.FindControl("lname")).Text;
+            old_name = ((Label)row.FindControl("lname")).Text;
             Databind();
         }
 
@@ -109,7 +109,6 @@ namespace test3.Courses
         {
             GridViewRow row = GridView1.Rows[e.RowIndex];
 
-            String new_id = ((TextBox)row.FindControl("tid")).Text;
             String name = ((TextBox)row.FindControl("tname")).Text;
             String department = ((TextBox)row.FindControl("tdepartment")).Text;
             String institute = ((DropDownList)row.FindControl("dins")).SelectedItem.Text;
@@ -133,16 +132,17 @@ namespace test3.Courses
                 return;
             }
 
-            if (new_id!=id && Util.IsIdExist("Course", new_id))
-            {
-                Response.Write("<script   language='javascript'>alert('课程Id已存在');</script>");
-                return;
-            }
-
             if (name!=old_name && Util.IsNameExist("Course", name))
             {
                 Response.Write("<script   language='javascript'>alert('课程名已存在');</script>");
                 return;
+            }
+
+            if (name != old_name)
+            {
+                Dictionary<String, String> dicc = new Dictionary<string, string>();
+                dicc.Add("course_name", name);
+                Util.Update(dicc, "Grade", "course_name", old_name);
             }
 
             Dictionary<String, String> dic = new Dictionary<string, string>();
@@ -175,12 +175,22 @@ namespace test3.Courses
         {
             Session["url"] = Request.RawUrl;
             Session["name"] = instituteName;
-            Response.Redirect("/AddCourse.aspx");
+            Response.Redirect("AddCourse.aspx");
         }
 
         protected void AddCourse_Click(object sender, EventArgs e)
         {
             AddStudent_Click( sender,  e);
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "view_grade")
+            {
+                Session["url"] = Request.RawUrl;
+                Session["name"] = ((Label)this.GridView1.Rows[Convert.ToInt32(e.CommandArgument)].FindControl("lname")).Text;
+                Response.Redirect("/Grades/ViewGrades.aspx");
+            }
         }
     }
 }
