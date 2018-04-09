@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewGrades.aspx.cs" Inherits="test3.Grades.ViewGrades" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentViewGrade.aspx.cs" Inherits="test3.Grades.StudentViewGrade" %>
 
 <!DOCTYPE html>
 
@@ -27,7 +27,7 @@
         .back{
             position:absolute;
             bottom:5%;
-            right:10%;
+            left:15%;
         }
 
         .method{
@@ -63,45 +63,26 @@
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
                 <Columns>
-                    <asp:TemplateField HeaderText="编号" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="课程编号"  ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label Width="100px" ID="lid" runat="server" Text='<%# Bind("id") %>'></asp:Label>
+                            <asp:Label Width="100px" ID="lid" runat="server" Text='<%# Bind("course_id") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="学号" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="课程"  ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label Width="100px" ID="lstudent_id" runat="server" Text='<%# Bind("student_id") %>'></asp:Label>
+                            <asp:Label Width="200px" ID="lstudent_id" runat="server" Text='<%# Bind("course_name") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="姓名" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="成绩"  ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lstudent_name" runat="server" Text='<%# Bind("student_name") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="课程编号" ItemStyle-HorizontalAlign="Center">
-                        <ItemTemplate>
-                            <asp:Label ID="lgender" runat="server" Text='<%# Bind("course_id") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="课程" ItemStyle-HorizontalAlign="Center">
-                        <ItemTemplate>
-                            <asp:Label ID="lbirthday" runat="server" Text='<%# Bind("course_name") %>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="成绩" ItemStyle-HorizontalAlign="Center">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="tscore" runat="server" Text='<%# Bind("score") %>' Width="100px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="lscore" runat="server" Text='<%# Bind("score") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="lstudent_name" runat="server" Text='<%# Bind("score") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="学分" ItemStyle-HorizontalAlign="Center">
-                        <ItemTemplate>
-                            <asp:Label ID="lcredit" runat="server" Text='<%# Bind("credit") %>' Width="100px"></asp:Label>
+                        <ItemTemplate >
+                            <asp:Label ID="lgender" runat="server" Text='<%# Bind("credit") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="true" ShowDeleteButton="true" />
                 </Columns>
 
                 <EditRowStyle BackColor="#999999" />
@@ -116,11 +97,6 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
-
-        <div class="add">
-            <asp:Button ID="enter" runat="server" Text="录入成绩" OnClick="enter_Click"/>
-        </div>
-
         <div class="back">
             <asp:Button ID="back" runat="server" Text="返回" OnClick="back_Click" />
         </div>

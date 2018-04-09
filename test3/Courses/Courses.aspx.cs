@@ -187,7 +187,7 @@ namespace test3.Courses
         {
             if (e.CommandName == "view_grade")
             {
-                Session["url"] = Request.RawUrl;
+                Session["first_back"] = Request.RawUrl;
                 Session["name"] = ((Label)this.GridView1.Rows[Convert.ToInt32(e.CommandArgument)].FindControl("lname")).Text;
                 Response.Redirect("/Grades/ViewGrades.aspx");
             }

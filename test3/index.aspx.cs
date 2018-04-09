@@ -20,13 +20,12 @@ namespace test3
             String name = this.userId.Text;
             String password = this.password.Text;
             if (Util.Login(name, password)){
-               
+                Response.Redirect("welcome.aspx");
             }
             else
             {
                 Response.Write("<script   language='javascript'>alert('账号或密码错误');</script>");
             }
-            
         }
     }
 }

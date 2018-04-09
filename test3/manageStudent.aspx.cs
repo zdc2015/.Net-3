@@ -77,6 +77,7 @@ namespace test3
         {
             String id = ((Label)this.GridView1.Rows[e.RowIndex].FindControl("lid")).Text;
             Util.Delete("Student", "id", id);
+            Util.Delete("Grade", "student_id", id);
             Databind();
         }
 
@@ -168,6 +169,17 @@ namespace test3
         {
             Session["url"] = Request.RawUrl;
             Response.Redirect("/AddStudent.aspx");
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "grade")
+            {
+                GridViewRow row = GridView1.Rows[Convert.ToInt32(e.CommandArgument)];
+                Session["student_id"] = ((Label)row.FindControl("lid")).Text;
+                Session["first_back"] = Request.RawUrl;
+                Response.Redirect("/Grades/StudentViewGrade.aspx");
+            }
         }
     }
 }

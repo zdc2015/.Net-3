@@ -6,12 +6,19 @@
 <style type="text/css">
 
     .label{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translateX(-50%) translateY(-50%);
         width:fit-content;
         height:fit-content;
-        margin:auto;
+        margin:0;
     }
 
-    form{
+    html,body,form{
+        margin:0px;
+        padding:0px;
+        border-width:0px;
         width:100%;
         height:100%;
     }

@@ -25,7 +25,7 @@
         }
 
         .method{
-            margin-bottom:10%;
+            margin-bottom:5%;
         }
 
     </style>
@@ -52,12 +52,13 @@
                 OnRowEditing="GridView1_RowEditing"
                 OnRowCancelingEdit="GridView1_RowCancelingEdit"
                 OnRowUpdating="GridView1_RowUpdating"
-                OnRowDataBound="GridView1_RowDataBound">
+                OnRowDataBound="GridView1_RowDataBound"
+                OnRowCommand="GridView1_RowCommand">
 
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
                 <Columns>
-                    <asp:TemplateField HeaderText="学号">
+                    <asp:TemplateField HeaderText="学号" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox Width="100px" ID="tid" runat="server" Text='<%# Bind("id") %>'></asp:TextBox>
                         </EditItemTemplate>
@@ -65,7 +66,7 @@
                             <asp:Label Width="100px" ID="lid" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="姓名">
+                    <asp:TemplateField HeaderText="姓名" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox ID="tname" runat="server" Text='<%# Bind("name") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -73,17 +74,17 @@
                             <asp:Label ID="lname" runat="server" Text='<%# Bind("name") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="性别">
+                    <asp:TemplateField HeaderText="性别" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Label ID="lgender" runat="server" Text='<%# Bind("gender") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="出生日期">
+                    <asp:TemplateField HeaderText="出生日期" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Label ID="lbirthday" runat="server" Text='<%# Bind("birthday") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="lbirthday" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem,"birthday")).ToString("yyyy-MM-dd")%>'  Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="手机">
+                    <asp:TemplateField HeaderText="手机" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox ID="tphone" runat="server" Text='<%# Bind("phone") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -91,9 +92,9 @@
                             <asp:Label ID="lphone" runat="server" Text='<%# Bind("phone") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="学院">
+                    <asp:TemplateField HeaderText="学院" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
-                            <asp:DropDownList Width="100px" runat="server" ID="dins" OnTextChanged="dins_TextChanged" AutoPostBack="true">
+                            <asp:DropDownList Width="200px" runat="server" ID="dins" OnTextChanged="dins_TextChanged" AutoPostBack="true">
                                 <asp:ListItem Value="1">航空宇航学院</asp:ListItem>
                                 <asp:ListItem Value="2">自动化学院</asp:ListItem>
                                 <asp:ListItem Value="3">机械学院</asp:ListItem>
@@ -102,10 +103,10 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lins" runat="server" Text='<%# Bind("institute") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="lins" runat="server" Text='<%# Bind("institute") %>' Width="200px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="年级">
+                    <asp:TemplateField HeaderText="年级" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox ID="tgrade" runat="server" Text='<%# Bind("grade") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -113,7 +114,7 @@
                             <asp:Label ID="Label4" runat="server" Text='<%# Bind("grade") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="班级">
+                    <asp:TemplateField HeaderText="班级" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox ID="tclass" runat="server" Text='<%# Bind("class") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -121,16 +122,17 @@
                             <asp:Label ID="Label5" runat="server" Text='<%# Bind("class") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="专业">
+                    <asp:TemplateField HeaderText="专业" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
-                            <asp:DropDownList runat="server" ID="dmajor" Width="100px" >
+                            <asp:DropDownList runat="server" ID="dmajor" Width="200px" >
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lmajor" runat="server" Text='<%# Bind("major") %>' Width="100px"></asp:Label>
+                            <asp:Label ID="lmajor" runat="server" Text='<%# Bind("major") %>' Width="200px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="true" ShowDeleteButton="true" />
+                    <asp:ButtonField ButtonType="Link" CommandName="grade" Text="成绩" />
                 </Columns>
 
                 <EditRowStyle BackColor="#999999" />

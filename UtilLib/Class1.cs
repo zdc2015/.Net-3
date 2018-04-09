@@ -14,7 +14,18 @@ namespace UtilLib
          
         static public Boolean Login(String account, String password)
         {
-            return false;
+            Dictionary<String, String> dic = new Dictionary<string, string>();
+            dic.Add("account", account);
+            dic.Add("password", password);
+            DataSet ds = GetTableDataSet("Manager", dic);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         

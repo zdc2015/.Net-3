@@ -9,15 +9,15 @@ using UtilLib;
 
 namespace test3.Grades
 {
-    public partial class ViewGrades : System.Web.UI.Page
+    public partial class StudentViewGrade : System.Web.UI.Page
     {
-        public static String[] selectTypeText = { "学号", "姓名","班级"};
-        public static String[] selectTypeValue = { "student_id", "student_name", "student_id" };
+        public static String[] selectTypeText = { "课程", "课程编号" };
+        public static String[] selectTypeValue = { "course_name", "course_id"};
         public static Dictionary<String, String> dic = new Dictionary<string, string>();
         //编辑之前的值
         public static String id = "";
         public static String ins = "";
-        public static String course_name = "";
+        public static String student_id = "";
         public static String back_url = "";
         //查询数据
         public static String value = "";
@@ -27,8 +27,8 @@ namespace test3.Grades
         {
             if (!IsPostBack)
             {
-                if (Session["name"] != null)
-                    course_name = Session["name"].ToString();
+                if (Session["student_id"] != null)
+                    student_id = Session["student_id"].ToString();
                 if (Session["first_back"] != null)
                     back_url = Session["first_back"].ToString();
                 Databind();
@@ -54,8 +54,8 @@ namespace test3.Grades
         public void Databind()
         {
             dic.Clear();
-            dic.Add("course_name", course_name);
-            if(key!="")
+            dic.Add("student_id", student_id);
+            if (key != "")
                 dic.Add(key, value);
             DataSet ds = Util.GetTableDataSet("Grade", dic);
             GridView1.DataSource = ds;
@@ -119,14 +119,14 @@ namespace test3.Grades
                 return;
             }
 
-            if(a>100 || a < 0)
+            if (a > 100 || a < 0)
             {
                 Response.Write("<script   language='javascript'>alert('成绩无效');</script>");
                 return;
             }
 
             Dictionary<String, String> dic = new Dictionary<string, string>();
-            dic.Add("score", a+"");
+            dic.Add("score", a + "");
 
             Util.Update(dic, "Grade", "id", id);
             GridView1.EditIndex = -1;
@@ -140,9 +140,7 @@ namespace test3.Grades
 
         protected void enter_Click(object sender, EventArgs e)
         {
-            Session["url"] = Request.RawUrl;
-            Session["name"] = course_name;
-            Response.Redirect("AddGrades.aspx");
+        
         }
 
         protected void back_Click(object sender, EventArgs e)

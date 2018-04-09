@@ -58,12 +58,12 @@
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
                 <Columns>
-                    <asp:TemplateField HeaderText="课程编号">
+                    <asp:TemplateField HeaderText="课程编号" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Label Width="100px" ID="lid" runat="server" Text='<%# Bind("id") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="课程">
+                    <asp:TemplateField HeaderText="课程" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox ID="tname" runat="server" Text='<%# Bind("name") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -71,7 +71,7 @@
                             <asp:Label ID="lname" runat="server" Text='<%# Bind("name") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="学分">
+                    <asp:TemplateField HeaderText="学分" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:TextBox ID="tcredit" runat="server" Text='<%# Bind("credit") %>' Width="100px"></asp:TextBox>
                         </EditItemTemplate>
@@ -79,9 +79,9 @@
                             <asp:Label ID="lcredit" runat="server" Text='<%# Bind("credit") %>' Width="100px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="学院">
+                    <asp:TemplateField HeaderText="学院" ItemStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
-                            <asp:DropDownList Width="150px" runat="server" ID="dins">
+                            <asp:DropDownList Width="200px" runat="server" ID="dins">
                                 <asp:ListItem Value="1">航空宇航学院</asp:ListItem>
                                 <asp:ListItem Value="2">自动化学院</asp:ListItem>
                                 <asp:ListItem Value="3">机械学院</asp:ListItem>
@@ -90,7 +90,7 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lins" runat="server" Text='<%# Bind("institute") %>' Width="150px"></asp:Label>
+                            <asp:Label ID="lins" runat="server" Text='<%# Bind("institute") %>' Width="200px"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
 
